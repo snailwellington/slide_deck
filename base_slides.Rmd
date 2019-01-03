@@ -1,0 +1,96 @@
+---
+title: "Slide deck 16:9"
+subtitle: ""
+author: "Tarmo Rähmonen"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: "slide_deck_css.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+      beforeInit: "slide_macros.js"
+    #seal: FALSE # enables title slide
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+  comment = NA, dpi = 300, echo = FALSE,
+  fig.align = "center") # needed to ensure ggplot dpi is OK
+library(ggplot2)
+```
+
+
+class: left, inverse
+
+# Formatted to the left and inverse colors 
+## Test of `##`
+### Test of `###`
+
+--
+
+- *Italic*
+
+--
+
+- **Bold**
+
+--
+
+- Regular text
+
+???
+Presenter notes, need to add ??? for each sub-part of the slides 
+
+---
+
+# Second slide
+
+- Fonts, colors, etc. can be edited in the .css file
+
+- Code can be added to text by using code between ` "``" `
+
+`r lubridate::year(Sys.Date())`
+
+- Code with output:
+``` {r example_lubridate}
+lubridate::year(Sys.Date())
+
+```
+---
+background-image: url("base_images/background.jpg")
+background-size: contain
+
+Slide without heading and has background image
+
+
+---
+
+
+# Image with scale macro
+![:scale 40%](base_images/background.jpg)
+
+
+---
+# Links
+
+---
+# GGplot
+``` {r example_ggplot, out.width = "80%", fig.height = 4, include = TRUE}
+ggplot(data = mtcars, aes(x = mpg, y = qsec, color = as.factor(cyl)))+
+  geom_point()+ geom_smooth()
+
+```
+
+---
+#Leaflet
+``` {r example_leaflet, out.width='80%', fig.height=1.5, eval=require('leaflet')}
+leaflet() %>% addTiles() %>% setView(26.5, 59, zoom = 7)
+## For reasons unknow leaflet needs fig.height = 2 to fit this slide deck and 1.5 with heading
+```
+
+
